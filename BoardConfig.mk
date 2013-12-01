@@ -59,7 +59,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 # Graphics
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/samsung/golden/configs/lib/egl/egl.cfg
-COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW -DFORCE_SCREENSHOT_CPU_PATH
+BOARD_EGL_NEEDS_LEGACY_FB := true
 
 # Screen
 TARGET_SCREEN_HEIGHT := 800
