@@ -24,6 +24,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/init.samsunggolden.rc:root/init.samsunggolden.rc \
+    $(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
     $(LOCAL_PATH)/root/ueventd.samsunggolden.rc:root/ueventd.samsunggolden.rc \
     $(LOCAL_PATH)/root/init.samsunggolden.usb.rc:root/init.samsunggolden.usb.rc \
     $(LOCAL_PATH)/root/fstab.samsunggolden:root/fstab.samsunggolden \
