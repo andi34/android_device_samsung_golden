@@ -108,6 +108,20 @@ BOARD_LPM_BOOT_ARGUMENT_VALUE := 1
 
 # SELinux
 HAVE_SELINUX := true
+BOARD_SEPOLICY_DIRS += device/samsung/golden/sepolicy
+BOARD_SEPOLICY_UNION += file_contexts
+BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    device.te \
+    domain.te \
+    file.te \
+    geomagneticd.te \
+    init.te \
+    mediaserver.te \
+    orientationd.te \
+    system.te \
+    vold.te \
+    wpa_supplicant.te
 
 # Recovery
 BOARD_UMS_LUNFILE := "/sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun0/file"
