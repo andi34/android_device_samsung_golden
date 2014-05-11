@@ -51,6 +51,8 @@
 #endif
 
 #define NUM_BUFFERS 2
+#define ALIGN(x, align) (((x) + ((align)-1)) & ~((align)-1))
+#define MAX_DISPLAY_DIM  2048
 
 typedef struct {
     GGLSurface texture;
@@ -174,6 +176,14 @@ static void get_memory_surface(GGLSurface* ms) {
   ms->format = PIXEL_FORMAT;
 }
 
+int getFbXres(void) {
+    return vi.xres;
+}
+
+int getFbYres (void) {
+    return vi.yres;
+}
+
 static void set_active_framebuffer(unsigned n)
 {
     if (n > 1 || !double_buffering) return;
@@ -224,12 +234,7 @@ void gr_font_size(int *x, int *y)
     *y = gr_font->cheight;
 }
 
-int gr_text(int x, int y, const char *s, ...)
-{
-    return gr_text_impl(x, y, s, 0);
-}
-
-int gr_text_impl(int x, int y, const char *s, int bold)
+int gr_text(int x, int y, const char *s, int bold)
 {
     GGLContext *gl = gr_context;
     GRFont *font = gr_font;
@@ -405,3 +410,4 @@ void gr_fb_blank(bool blank)
     if (ret < 0)
         perror("ioctl(): blank");
 }
+
