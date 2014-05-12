@@ -121,7 +121,7 @@ BOARD_SEPOLICY_DIRS += device/samsung/golden/sepolicy
 BOARD_SEPOLICY_UNION += file_contexts
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/golden/rootdir/fstab.samsunggolden
+TARGET_RECOVERY_FSTAB := device/samsung/golden/recovery/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/golden/recovery/graphics.c
 BOARD_SUPPRESS_EMMC_WIPE := true
