@@ -1,6 +1,7 @@
 #
 # Copyright (C) 2013 The Android Open Source Project
 # Copyright (C) 2013 Óliver García Albertos (oliverarafo@gmail.com)
+# Copyright (C) 2014 OmniROM Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,15 +18,12 @@
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, build/target/product/full_base_telephony.mk)
-$(call inherit-product, build/target/product/languages_full.mk)
-
-# Use the Dalvik VM specific for devices with 1024 MB of RAM
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
 # Inherit the proprietary vendors blobs for Samsung Golden.
 $(call inherit-product-if-exists, vendor/samsung/golden/golden-vendor.mk)
+
+# Define kind of DPI
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -57,11 +55,11 @@ PRODUCT_COPY_FILES += \
 # Graphics
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/lib/egl/egl.cfg:system/lib/egl/egl.cfg
+	
 PRODUCT_PACKAGES += \
     libblt_hw
+	
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072 \
-    debug.hwui.render_dirty_regions=false \
     persist.sys.use_dithering=2 \
     persist.sys.strictmode.disable=1
 
@@ -70,37 +68,21 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/omxloaders:system/omxloaders
+
 PRODUCT_PACKAGES += \
     libomxil-bellagio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ste.nmf.autoidle=1 \
-    ste.video.dec.mpeg4.in.size=8192 \
-    ste.video.enc.out.buffercnt=5 \
-    ste.video.dec.recycle.delay=1 \
-    ste.omx.ctx=0
-
-# Screen
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=240 \
-    ro.sf.display_rotation=0 \
-    ro.lcd_brightness=170 \
-    ro.lcd_min_brightness=30
-
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    ste.cam.front.orientation=270 \
-    ste.cam.back.orientation=90 \
-    ste.cam.ext.cfg.path.secondary=/system/usr/share/camera/config_file/aptina_mt9v113.dat
 
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
 PRODUCT_PACKAGES += \
     libnetcmdiface
+
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
+    wifi.interface=wlan0
     wifi.supplicant_scan_interval=15
 
 # Bluetooth
@@ -114,6 +96,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/AT/manuf_id.cfg:system/etc/AT/manuf_id.cfg \
     $(LOCAL_PATH)/configs/etc/AT/model_id.cfg:system/etc/AT/model_id.cfg \
     $(LOCAL_PATH)/configs/etc/AT/system_id.cfg:system/etc/AT/system_id.cfg
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.ril_class=SamsungU8500RIL \
@@ -129,6 +112,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf
+
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
@@ -189,16 +173,8 @@ PRODUCT_PACKAGES += \
     OmniTorch \
     com.android.future.usb.accessory
 
-# Non-device-specific props
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.locationfeatures=1 \
-    ro.setupwizard.mode=OPTIONAL \
-    ro.setupwizard.enable_bypass=1 \
-    ro.config.sync=yes
-
-# Define kind of DPI
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Use the Dalvik VM specific for devices with 1024 MB of RAM
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
