@@ -48,7 +48,8 @@
    <manifest>
      <project name="andi34/android_device_samsung_golden" remote="github" path="device/samsung/golden" revision="android-4.4" />
      <project name="andi34/android_kernel_samsung_golden" remote="github" path="kernel/samsung/golden" revision="android-4.4" />
-     <project name="golden-guy/android_vendor_samsung_golden" remote="github" path="vendor/samsung/golden" revision="android-4.4" />
+     <project name="andi34/proprietary_galaxy_tab2" remote="github" path="vendor/samsung" revision="android-4.4" />
+	 <project name="andi34/android_hardware_u8500" remote="github" path="hardware/u8500" revision="android-4.4" />
    </manifest>
 
   $ repo sync

@@ -18,9 +18,6 @@
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Inherit the proprietary vendors blobs for Samsung Golden.
-$(call inherit-product-if-exists, vendor/samsung/golden/golden-vendor.mk)
-
 # Define kind of DPI
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -56,9 +53,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 	
-PRODUCT_PACKAGES += \
-    libblt_hw
-	
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.use_dithering=2 \
     persist.sys.strictmode.disable=1
@@ -69,14 +63,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/omxloaders:system/omxloaders
 
-PRODUCT_PACKAGES += \
-    libomxil-bellagio
-
 # Wifi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
     libnetcmdiface
@@ -84,6 +73,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
     wifi.supplicant_scan_interval=15
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
@@ -115,12 +105,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio.usb.default \
-    libasound
-
-# Sensors
-PRODUCT_PACKAGES += \
-    lights.montblanc
+    audio.usb.default
 
 # Power
 PRODUCT_PACKAGES += \
@@ -178,3 +163,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Use the Dalvik VM specific for devices with 1024 MB of RAM
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Use U8500 opensource parts
+$(call inherit-product-if-exists, hardware/u8500/u8500.mk)
+
+# Use the non-open-source parts, if they´re present
+$(call inherit-product-if-exists, vendor/samsung/golden/golden-vendor.mk)
