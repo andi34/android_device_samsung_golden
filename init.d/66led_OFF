@@ -1,0 +1,6 @@
+#!/system/bin/sh
+
+# Fix for force disable softkeys lights and BLN
+
+# echo 0 > /sys/class/leds/button-backlight/brightness;
+# chmod 444 /sys/class/leds/button-backlight/brightness;
