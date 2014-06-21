@@ -15,16 +15,25 @@
 # limitations under the License.
 #
 
-# Inherit from Omni custom product configuration
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit GSM telephony parts
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
+
+# Inherit common CM configurations
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
 # Inherit device configuration
-$(call inherit-product, device/samsung/golden/golden.mk)
+$(call inherit-product, device/samsung/golden/device.mk)
 
 # Device identifier
+PRODUCT_MODEL := GT-I8190
+PRODUCT_BRAND := samsung
 PRODUCT_NAME := cm_golden
 PRODUCT_DEVICE := golden
-PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := Samsung
-PRODUCT_MODEL := GT-I8190
