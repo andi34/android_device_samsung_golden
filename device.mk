@@ -1,7 +1,6 @@
 #
 # Copyright (C) 2013 The Android Open Source Project
 # Copyright (C) 2013 Óliver García Albertos (oliverarafo@gmail.com)
-# Copyright (C) 2014 SlimRoms Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -70,7 +69,7 @@ PRODUCT_PACKAGES += \
     libnetcmdiface
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0
+    wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
