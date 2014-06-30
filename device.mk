@@ -151,13 +151,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# F2FS
-PRODUCT_PACKAGES += \
-    genfstab \
-    mkfs.f2fs \
-    fsck.f2fs \
-    fibmap.f2fs
-
 # Misc packages
 PRODUCT_PACKAGES += \
     Torch \
