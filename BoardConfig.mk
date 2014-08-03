@@ -63,6 +63,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/samsung/golden/configs/lib/egl/egl.cfg
 BOARD_EGL_NEEDS_LEGACY_FB := true
+# reduce PB size from 2MB to 512KB
+BOARD_EGL_SYSTEMUI_PBSIZE_HACK :=true
 
 # Screen
 TARGET_SCREEN_HEIGHT := 800
