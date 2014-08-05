@@ -32,12 +32,13 @@ PRODUCT_COPY_FILES += \
 
 # Recovery ramdisk, libraries and modules.
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/rootdir/init.recovery.samsunggolden.rc:root/init.recovery.samsunggolden.rc \
-    $(LOCAL_PATH)/recovery/rootdir/sbin/libkeyutils.so:recovery/root/sbin/libkeyutils.so \
-    $(LOCAL_PATH)/recovery/rootdir/sbin/libsec_km.so:recovery/root/sbin/libsec_km.so \
-    $(LOCAL_PATH)/recovery/rootdir/sbin/libsec_ecryptfs.so:recovery/root/sbin/libsec_ecryptfs.so \
-    $(LOCAL_PATH)/recovery/rootdir/lib/modules/j4fs.ko:recovery/root/lib/modules/j4fs.ko \
-    $(LOCAL_PATH)/recovery/rootdir/lib/modules/param.ko:recovery/root/lib/modules/param.ko
+    $(LOCAL_PATH)/recovery/root/init.recovery.samsunggolden.rc:root/init.recovery.samsunggolden.rc \
+    $(LOCAL_PATH)/recovery/root/etc/extra.fstab:recovery/root/etc/extra.fstab \
+    $(LOCAL_PATH)/recovery/root/sbin/libkeyutils.so:recovery/root/sbin/libkeyutils.so \
+    $(LOCAL_PATH)/recovery/root/sbin/libsec_km.so:recovery/root/sbin/libsec_km.so \
+    $(LOCAL_PATH)/recovery/root/sbin/libsec_ecryptfs.so:recovery/root/sbin/libsec_ecryptfs.so \
+    $(LOCAL_PATH)/recovery/root/lib/modules/j4fs.ko:recovery/root/lib/modules/j4fs.ko \
+    $(LOCAL_PATH)/recovery/root/lib/modules/param.ko:recovery/root/lib/modules/param.ko
 
 # Inputs
 PRODUCT_COPY_FILES += \
