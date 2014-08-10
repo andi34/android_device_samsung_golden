@@ -9,14 +9,7 @@ format_to_ext4() {
   fi
 }
 
-format_to_f2fs() {
-  if [ $(blkid ${1} | grep -c "f2fs") -lt 1 ]; then
-    mkfs.f2fs ${1}
-  fi
-}
-
 DEFAULTROM=0
-F2FS=0
 
 # Galaxy Tab 3 T31x block device
 # Don't use /dev/block/platform/*/by-name/* symlink!
@@ -44,12 +37,7 @@ sleep 1
 mkdir /.secondrom
 
 # Mount /data partition as ext4 or f2fs
-if [ $(blkid $DATADEV | grep -c "ext4") -eq 1 ]; then
-  busybox mount -t ext4 -o noatime,nodiratime,noauto_da_alloc,barrier=1 $DATADEV /.secondrom
-else
-  busybox mount -t f2fs -o noatime,nodiratime,background_gc=off,inline_xattr,active_logs=2 $DATADEV /.secondrom
-  F2FS=1
-fi
+busybox mount -t ext4 -o noatime,nodiratime,noauto_da_alloc,barrier=1 $DATADEV /.secondrom
 
 # Reset default recovery
 echo -n 0 > /.secondrom/media/.defaultrecovery
@@ -64,13 +52,8 @@ if [ -f /.secondrom/media/.secondrom/system.img ]; then
 fi
 
 if [ "$DEFAULTROM" == "1" ]; then
-  if [ "$F2FS" == "1" ]; then
-    # Make sure /cache filesystem same as /data filesystem
-    format_to_f2fs $HIDDENDEV
-  else
-    mv -f /res/misc/recovery.fstab.2 /etc/recovery.fstab
-    format_to_ext4 $HIDDENDEV
-  fi
+  mv -f /res/misc/recovery.fstab.2 /etc/recovery.fstab
+  format_to_ext4 $HIDDENDEV
 
   rm -f /sbin/mount /sbin/umount
   mv -f /res/misc/mount.2 /sbin/mount
@@ -96,11 +79,7 @@ if [ "$DEFAULTROM" == "1" ]; then
     echo "menu_text_color=4" >> /data/philz-touch/philz-touch_6.ini
   fi
 else
-  if [ "$F2FS" == "1" ]; then
-    format_to_f2fs $CACHEDEV
-  else
-    format_to_ext4 $CACHEDEV
-  fi
+  format_to_ext4 $CACHEDEV
 
   rm -f /sbin/mount /sbin/umount
   mv -f /res/misc/mount /sbin/mount
