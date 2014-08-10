@@ -130,6 +130,7 @@ BOARD_SEPOLICY_DIRS += device/samsung/golden/sepolicy
 BOARD_SEPOLICY_UNION += file_contexts
 
 # Recovery
+TARGET_RECOVERY_INITRC := device/samsung/golden/recovery/root/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/golden/recovery/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/golden/recovery/graphics.c
