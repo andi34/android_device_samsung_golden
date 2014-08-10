@@ -143,6 +143,7 @@ BOARD_SEPOLICY_UNION += \
 BOARD_UMS_LUNFILE := "/sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun0/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun%d/file"
 TARGET_RECOVERY_FSTAB := device/samsung/golden/root/fstab.samsunggolden
+TARGET_RECOVERY_INITRC := device/samsung/golden/recovery/root/init.rc
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/golden/recovery/graphics.c

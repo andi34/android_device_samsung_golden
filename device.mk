@@ -35,6 +35,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/init.recovery.samsunggolden.rc:root/init.recovery.samsunggolden.rc \
     $(LOCAL_PATH)/recovery/root/etc/extra.fstab:recovery/root/etc/extra.fstab
 
+# Dual-Boot PhilZ Touch Recovery files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/res/misc/bootmenu.zip:recovery/root/res/misc/bootmenu.zip \
+    $(LOCAL_PATH)/recovery/root/res/misc/tool.zip:recovery/root/res/misc/tool.zip \
+    $(LOCAL_PATH)/recovery/root/res/misc/mount:recovery/root/res/misc/mount \
+    $(LOCAL_PATH)/recovery/root/res/misc/mount.2:recovery/root/res/misc/mount.2 \
+    $(LOCAL_PATH)/recovery/root/res/misc/umount:recovery/root/res/misc/umount \
+    $(LOCAL_PATH)/recovery/root/res/misc/umount.2:recovery/root/res/misc/umount.2 \
+    $(LOCAL_PATH)/recovery/root/res/misc/recovery.fstab.2:recovery/root/res/misc/recovery.fstab.2 \
+    $(LOCAL_PATH)/recovery/root/res/misc/virtual_keys.2.png:recovery/root/res/misc/virtual_keys.2.png \
+    $(LOCAL_PATH)/recovery/root/sbin/aroma:recovery/root/sbin/aroma \
+    $(LOCAL_PATH)/recovery/root/sbin/bootmenu.sh:recovery/root/sbin/bootmenu.sh
+
 # Inputs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
