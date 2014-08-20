@@ -9,7 +9,21 @@ format_to_ext4() {
   fi
 }
 
+format_to_f2fs() {
+  if [ $(blkid ${1} | grep -c "f2fs") -lt 1 ]; then
+    mkfs.f2fs ${1}
+  fi
+}
+
 DEFAULTROM=0
+F2FS=0
+
+# Galaxy S3 mini (i8190, aka. golden) block device
+# Don't use /dev/block/platform/*/by-name/* symlink!
+SYSTEMDEV="/dev/block/mmcblk0p22"
+CACHEDEV="/dev/block/mmcblk0p23"
+HIDDENDEV="/dev/block/mmcblk0p24"
+DATADEV="/dev/block/mmcblk0p25"
 
 # Galaxy Tab 3 T31x block device
 # Don't use /dev/block/platform/*/by-name/* symlink!
@@ -19,25 +33,28 @@ DEFAULTROM=0
 # HIDDENDEV="/dev/block/mmcblk0p16"
 
 # Galaxy Tab 2 block device
-# Don't use /dev/block/platform/*/by-name/* symlink!
 # SYSTEMDEV="/dev/block/mmcblk0p9"
 # DATADEV="/dev/block/mmcblk0p10"
 # CACHEDEV="/dev/block/mmcblk0p7"
 # HIDDENDEV="/dev/block/mmcblk0p11"
 
-# Galaxy S3 mini (i8190, aka. golden) block device
-# Don't use /dev/block/platform/*/by-name/* symlink!
-SYSTEMDEV="/dev/block/mmcblk0p22"
-DATADEV="/dev/block/mmcblk0p25"
-CACHEDEV="/dev/block/mmcblk0p23"
-HIDDENDEV="/dev/block/mmcblk0p24"
+# Set CPU governor, NEXT kernel for Galaxy Tab 2 default governor is performance
+# echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+# Rotate touchscreen orientation, for Galaxy Tab 2 P31xx
+# echo 0 > /sys/devices/virtual/sec/tsp/pivot
 
 # Waiting for kernel init process
 sleep 1
 mkdir /.secondrom
 
 # Mount /data partition as ext4 or f2fs
-busybox mount -t ext4 -o noatime,nodiratime,noauto_da_alloc,barrier=1 $DATADEV /.secondrom
+if [ $(blkid $DATADEV | grep -c "ext4") -eq 1 ]; then
+  busybox mount -t ext4 -o noatime,nodiratime,noauto_da_alloc,barrier=1 $DATADEV /.secondrom
+else
+  busybox mount -t f2fs -o noatime,nodiratime,background_gc=off,inline_xattr,active_logs=2 $DATADEV /.secondrom
+  F2FS=1
+fi
 
 # Reset default recovery
 echo -n 0 > /.secondrom/media/.defaultrecovery
@@ -52,8 +69,13 @@ if [ -f /.secondrom/media/.secondrom/system.img ]; then
 fi
 
 if [ "$DEFAULTROM" == "1" ]; then
-  mv -f /res/misc/recovery.fstab.2 /etc/recovery.fstab
-  format_to_ext4 $HIDDENDEV
+  if [ "$F2FS" == "1" ]; then
+    # Make sure /cache filesystem same as /data filesystem
+    format_to_f2fs $HIDDENDEV
+  else
+    mv -f /res/misc/recovery.fstab.2 /etc/recovery.fstab
+    format_to_ext4 $HIDDENDEV
+  fi
 
   rm -f /sbin/mount /sbin/umount
   mv -f /res/misc/mount.2 /sbin/mount
@@ -79,7 +101,11 @@ if [ "$DEFAULTROM" == "1" ]; then
     echo "menu_text_color=4" >> /data/philz-touch/philz-touch_6.ini
   fi
 else
-  format_to_ext4 $CACHEDEV
+  if [ "$F2FS" == "1" ]; then
+    format_to_f2fs $CACHEDEV
+  else
+    format_to_ext4 $CACHEDEV
+  fi
 
   rm -f /sbin/mount /sbin/umount
   mv -f /res/misc/mount /sbin/mount
