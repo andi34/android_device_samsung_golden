@@ -3,6 +3,7 @@ import /init.recovery.samsunggolden.rc
 on early-init
     start ueventd
     start healthd
+    write /sys/devices/platform/mcde_fb/graphics/fb0/bits_per_pixel 16
     exec /sbin/bootmenu.sh
 
 on init
