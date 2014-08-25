@@ -29,6 +29,7 @@ on init
 
     mkdir /modemfs 0771 system system
     mkdir /efs 0775 radio system
+
     # Shared memory file system
     mkdir /dev/shm 0700 root system
     mount tmpfs tmpfs /dev/shm mode=0755,gid=1000
@@ -253,7 +254,7 @@ on post-fs
     chown system radio /sys/class/sensors/light_sensor/vendor
     chown system radio /sys/class/sensors/light_sensor/name
 
-# PRCMU debug fs
+    # PRCMU debug fs
     chown radio system /debug/prcmu/ape_opp
     chown radio system /debug/prcmu/ddr_opp
     chmod 0660 /debug/prcmu/ape_opp
@@ -273,7 +274,6 @@ on post-fs
     write /sys/class/power_supply/sec-fuelgauge/reinit_cap 1
 
 on post-fs-data
-
     # create basic filesystem structure
     mkdir /data/media 0775 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -305,7 +305,6 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on early-boot
-
     # Prepare modem
     class_start modem-u8500
     class_start modem-core
@@ -314,7 +313,6 @@ on early-boot
     write /sys/module/cm/parameters/enable_auto_pm 1
 
 on boot
-
     # debugfs
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
@@ -359,7 +357,7 @@ on boot
     chown radio system /sys/devices/platform/gpio-keys.0/wakeup_keys
     write /sys/devices/platform/gpio-keys.0/wakeup_keys 172
 
-    # Peremissions for bluetooth
+    # Permissions for bluetooth
     # UART device
     chown bluetooth bluetooth /dev/ttyAMA0
     chmod 0660 /dev/ttyAMA0
@@ -374,7 +372,7 @@ on boot
 
     # for bluetooth. change access rights as btld runs as bluetooth user
     chown root bluetooth /sys/class/rfkill/rfkill0
-    chown root bluetooth /sys/class/rfkill/rfkill0/claim	
+    chown root bluetooth /sys/class/rfkill/rfkill0/claim
     chown root bluetooth /sys/class/rfkill/rfkill0/soft
     chmod 0664 /sys/class/rfkill/rfkill0/claim
     chmod 0664 /sys/class/rfkill/rfkill0/soft
