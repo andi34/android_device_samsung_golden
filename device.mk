@@ -23,11 +23,11 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.samsunggolden.rc:root/init.samsunggolden.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.samsunggolden.rc:root/ueventd.samsunggolden.rc \
-    $(LOCAL_PATH)/rootdir/init.samsunggolden.usb.rc:root/init.samsunggolden.usb.rc \
-    $(LOCAL_PATH)/rootdir/fstab.samsunggolden:root/fstab.samsunggolden \
-    $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc
+    $(LOCAL_PATH)/root/init.samsunggolden.rc:root/init.samsunggolden.rc \
+    $(LOCAL_PATH)/root/ueventd.samsunggolden.rc:root/ueventd.samsunggolden.rc \
+    $(LOCAL_PATH)/root/init.samsunggolden.usb.rc:root/init.samsunggolden.usb.rc \
+    $(LOCAL_PATH)/root/fstab.samsunggolden:root/fstab.samsunggolden \
+    $(LOCAL_PATH)/root/lpm.rc:root/lpm.rc
 
 # Recovery ramdisk, libraries and modules.
 PRODUCT_COPY_FILES += \
