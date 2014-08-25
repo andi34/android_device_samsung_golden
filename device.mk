@@ -29,6 +29,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.samsunggolden:root/fstab.samsunggolden \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc
 
+# Recovery ramdisk, libraries and modules.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/init.recovery.samsunggolden.rc:root/init.recovery.samsunggolden.rc
+
 # Inputs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
