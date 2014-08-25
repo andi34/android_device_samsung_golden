@@ -38,8 +38,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072 \
-    debug.hwui.render_dirty_regions=false \
     persist.sys.use_dithering=2 \
     persist.sys.strictmode.disable=1
 
@@ -48,26 +46,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/omxloaders:system/omxloaders
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ste.nmf.autoidle=1 \
-    ste.video.dec.mpeg4.in.size=8192 \
-    ste.video.enc.out.buffercnt=5 \
-    ste.video.dec.recycle.delay=1 \
-    ste.omx.ctx=0
-
-# Screen
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=240 \
-    ro.sf.display_rotation=0 \
-    ro.lcd_brightness=170 \
-    ro.lcd_min_brightness=30
-
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    ste.cam.front.orientation=270 \
-    ste.cam.back.orientation=90 \
-    ste.cam.ext.cfg.path.secondary=/system/usr/share/camera/config_file/aptina_mt9v113.dat
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -93,6 +71,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/AT/manuf_id.cfg:system/etc/AT/manuf_id.cfg \
     $(LOCAL_PATH)/configs/etc/AT/model_id.cfg:system/etc/AT/model_id.cfg \
     $(LOCAL_PATH)/configs/etc/AT/system_id.cfg:system/etc/AT/system_id.cfg
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.ril_class=SamsungU8500RIL \
@@ -108,6 +87,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf
+
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
