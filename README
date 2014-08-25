@@ -22,54 +22,11 @@
   This repository is for CM10.2 on Samsung Galaxy SIII Mini a.k.a Samsung Golden.
   It's still a work in progress.
 
-* How To Build CM10.2 for Samsung Golden
-
-  - Make a workspace
-
-  $ mkdir -p ~/cyanogenmod/system
-  $ cd ~/cyanogenmod/system
-
-
-  - Do repo init & sync
-
-  $ repo init -u git://github.com/CyanogenMod/android.git -b cm-10.2
-
-
-  - Create .repo/local_manifests/roomservice.xml with the following content:
-
-  <?xml version="1.0" encoding="UTF-8"?>
-  <manifest>
-      <project name="OliverG96/android_device_samsung_golden" path="device/samsung/golden" />
-      <project name="OliverG96/android_kernel_samsung_golden" path="kernel/samsung/golden" />
-      <project name="OliverG96/android_vendor_samsung_golden" path="vendor/samsung/golden" />
-  </manifest>
-
-  $ repo sync
-
-
-  - Setup vendor
-
-  $ ./vendor/cm/get-prebuilts
-
-
-  - Pull all not merged fixes from gerrit:
-  $ ./device/samsung/golden/pull
-
-
-  - Setup environment
-
-  $ source build/envsetup.sh
-  $ lunch cm_golden-eng
-
-
-  - Build CM10.2
-
-  $ export USE_CCACHE=1
-  $ make -j4 bacon
-
 
 * Thanks
-
+  
+  OliverG96
+  golden-guy
   CyanogenMod
   alquez
   modpunk
