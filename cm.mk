@@ -17,16 +17,25 @@
 
 # Inherit CM common GSM/Phone stuff.
 $(call inherit-product, vendor/cm/config/gsm.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := golden
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
+
+# Inherit some common CM stuff
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/golden/device.mk)
 
 # Device identifier
-PRODUCT_DEVICE := golden
-PRODUCT_NAME := cm_golden
-PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-I8190
+PRODUCT_BRAND := samsung
+PRODUCT_NAME := cm_golden
+PRODUCT_DEVICE := golden
 PRODUCT_MANUFACTURER := samsung
 
 # Set build fingerprint and ID
