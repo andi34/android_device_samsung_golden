@@ -40,3 +40,10 @@ PRODUCT_BRAND := samsung
 PRODUCT_NAME := cm_golden
 PRODUCT_DEVICE := golden
 PRODUCT_MANUFACTURER := samsung
+
+#Set build fingerprint / ID / Prduct Name ect.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=goldenxx \
+    TARGET_DEVICE=golden \
+    PRIVATE_BUILD_DESC="goldenxx-user 4.1.2 JZO54K I8190XXAMG4 release-keys" \
+    BUILD_FINGERPRINT="samsung/goldenxx/golden:4.1.2/JZO54K/I8190XXAMG4:user/release-keys"
