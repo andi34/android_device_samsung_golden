@@ -113,7 +113,6 @@ BOARD_LPM_BOOT_ARGUMENT_VALUE := 1
 # SELinux
 HAVE_SELINUX := true
 BOARD_SEPOLICY_DIRS += device/samsung/golden/sepolicy
-BOARD_SEPOLICY_UNION += file_contexts
 BOARD_SEPOLICY_UNION += \
     file_contexts \
     device.te \
