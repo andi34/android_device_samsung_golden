@@ -50,6 +50,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # exFAT kernel support
 KERNEL_EXFAT_MODULE_NAME := "exfat"
 
+# F2FS filesystem
+TARGET_USERIMAGES_USE_F2FS := true
+
 # Ramdisk
 TARGET_PROVIDES_ENVIRON_RC := true
 
