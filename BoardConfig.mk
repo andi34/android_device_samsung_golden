@@ -57,7 +57,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_PROVIDES_ENVIRON_RC := true
 
 # Kernel
-TARGET_KERNEL_CONFIG := cyanogenmod_golden_defconfig
+TARGET_KERNEL_CONFIG := blackhawk_golden_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/golden
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/golden/shbootimg.mk
 BOARD_KERNEL_CMDLINE := "androidboot.selinux=permissive"
