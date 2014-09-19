@@ -73,13 +73,8 @@ if [ "$DEFAULTROM" == "1" ]; then
     format_to_ext4 $HIDDENDEV
   fi
 
-  # 2nd recovery spesific files
+  # 2nd recovery spesific fstab
   mv -f /res/misc/recovery.fstab.2 /etc/recovery.fstab
-  rm -f /sbin/mount /sbin/umount
-  mv -f /res/misc/mount.2 /sbin/mount
-  mv -f /res/misc/umount.2 /sbin/umount
-  mv -f /res/misc/virtual_keys.2.png /res/images/virtual_keys.png
-  chmod 755 /sbin/mount /sbin/umount
 
   # Associate /dev/block/loop0 with system.img
   losetup /dev/block/loop0 /.secondrom/media/.secondrom/system.img
@@ -92,10 +87,17 @@ if [ "$DEFAULTROM" == "1" ]; then
 
   # Bind mount /.secondrom/media/.secondrom/data to /data for transparent operation
   # no real block device and always locked
+  mkdir -p /data/media
   mkdir -p /.secondrom/media/.secondrom/data
   busybox mount --bind /.secondrom/media/.secondrom/data /data
-  mkdir -p /data/media
   busybox mount --bind /.secondrom/media /data/media
+
+  # 2nd recovery spesific files
+  rm -f /sbin/mount /sbin/umount
+  mv -f /res/misc/mount.2 /sbin/mount
+  mv -f /res/misc/umount.2 /sbin/umount
+  mv -f /res/misc/virtual_keys.2.png /res/images/virtual_keys.png
+  chmod 755 /sbin/mount /sbin/umount
 
   # Create philz-touch_6.ini if not available and set menu_text_color to blue
   if [ ! -f /data/philz-touch/philz-touch_6.ini ]; then
