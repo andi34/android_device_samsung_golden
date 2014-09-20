@@ -93,10 +93,10 @@ if [ "$DEFAULTROM" == "1" ]; then
   mkdir -p /data/media
   busybox mount --bind /.secondrom/media /data/media
 
-  # Create philz-touch_6.ini if not available and set menu_text_color to blue
+  # Create philz-touch_6.ini if not available and set menu_text_color to red
   if [ ! -f /data/philz-touch/philz-touch_6.ini ]; then
     mkdir -p /data/philz-touch
-    echo "menu_text_color=4" >> /data/philz-touch/philz-touch_6.ini
+    echo "menu_text_color=11" >> /data/philz-touch/philz-touch_6.ini
   fi
 else
   # Make sure /cache filesystem same as /data filesystem
