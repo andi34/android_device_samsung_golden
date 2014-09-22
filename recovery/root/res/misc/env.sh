@@ -13,7 +13,6 @@ export DATADEV="/dev/block/mmcblk0p25"
 export CACHEDEV="/dev/block/mmcblk0p23"
 export HIDDENDEV="/dev/block/mmcblk0p24"
 # For a common /cache partition, set HIDDENDEV to /dev/block/mmcblk0p23
-# recovery.fstab.2 change needed
 # fstab.*.2 change (in boot image) needed
 
 # Galaxy Tab 3 T31x block device

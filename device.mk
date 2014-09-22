@@ -44,7 +44,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/res/misc/mount.2:recovery/root/res/misc/mount.2 \
     $(LOCAL_PATH)/recovery/root/res/misc/umount:recovery/root/res/misc/umount \
     $(LOCAL_PATH)/recovery/root/res/misc/umount.2:recovery/root/res/misc/umount.2 \
-    $(LOCAL_PATH)/recovery/root/res/misc/recovery.fstab.2:recovery/root/res/misc/recovery.fstab.2 \
     $(LOCAL_PATH)/recovery/root/res/misc/virtual_keys.2.png:recovery/root/res/misc/virtual_keys.2.png \
     $(LOCAL_PATH)/recovery/root/sbin/aroma:recovery/root/sbin/aroma \
     $(LOCAL_PATH)/recovery/root/sbin/bootmenu.sh:recovery/root/sbin/bootmenu.sh
