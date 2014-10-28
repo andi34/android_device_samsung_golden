@@ -35,7 +35,7 @@ export DATAFREESPACE=2457600
 # Create 2GB sparse image command in dual boot tool
 # dd if=/dev/zero of=/data/media/.secondrom/system.img bs=1024 seek=2000000 count=0
 # Set the seek value here, maximum 2000000
-export IMGSEEKVALUE=1500000
+export IMGSEEKVALUE=2000000
 
 # Reboot to download mode command, "download", "bootloader", etc
 export DOWNLOADCMD="download"
