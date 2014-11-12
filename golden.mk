@@ -223,7 +223,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ntp.sync_mode=3
 
 # Define kind of DPI
-PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # We have enough storage space to hold precise GC data
