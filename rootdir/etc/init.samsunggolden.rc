@@ -52,6 +52,8 @@ on init
 
 on fs
     mount_all /fstab.samsunggolden
+    swapon_all /fstab.samsunggolden
+
     setprop ro.crypto.fuse_sdcard true
     start cspsa
 
