@@ -23,6 +23,10 @@
 extern "C" {
 #endif
 
+#ifdef STE_HARDWARE
+#include <sys/cdefs.h>
+#include <sys/types.h>
+#endif
 /*
  * If the HAL needs to create service threads to handle graphics related
  * tasks, these threads need to run at HAL_PRIORITY_URGENT_DISPLAY priority
@@ -163,6 +167,7 @@ enum {
      */
     HAL_PIXEL_FORMAT_Y16    = 0x20363159,
 
+#ifndef STE_HARDWARE
     /*
      * Android RAW sensor format:
      *
@@ -314,13 +319,34 @@ enum {
      * locking with the (*lock) method will return an error.
      */
     HAL_PIXEL_FORMAT_YCbCr_420_888 = 0x23,
+#endif
 
+#ifdef STE_HARDWARE
+    /* STE: Added Support of YUV42XMBN, required for Copybit CC acceleration */
+    HAL_PIXEL_FORMAT_YCBCR42XMBN = 0xE,
+#endif
     /* Legacy formats (deprecated), used by ImageFormat.java */
     HAL_PIXEL_FORMAT_YCbCr_422_SP       = 0x10, // NV16
     HAL_PIXEL_FORMAT_YCrCb_420_SP       = 0x11, // NV21
+#ifdef STE_HARDWARE
+    HAL_PIXEL_FORMAT_YCbCr_422_P        = 0x12,
+    HAL_PIXEL_FORMAT_YCbCr_420_P        = 0x13,
+#endif
     HAL_PIXEL_FORMAT_YCbCr_422_I        = 0x14, // YUY2
+#ifdef STE_HARDWARE
+    HAL_PIXEL_FORMAT_YCbCr_420_I        = 0x15,
+    HAL_PIXEL_FORMAT_CbYCrY_422_I       = 0x16,
+    HAL_PIXEL_FORMAT_CbYCrY_420_I       = 0x17,
+    HAL_PIXEL_FORMAT_YCbCr_420_SP_TILED = 0x20,
+    HAL_PIXEL_FORMAT_YCbCr_420_SP       = 0x21,
+    HAL_PIXEL_FORMAT_YCrCb_420_SP_TILED = 0x22,
+    HAL_PIXEL_FORMAT_YCrCb_422_SP       = 0x23,
+    HAL_PIXEL_FORMAT_YCrCb_422_P        = 0x24,
+    HAL_PIXEL_FORMAT_YCrCb_420_P        = 0x25,
+#endif
 };
 
+#ifndef STE_HARDWARE
 /*
  * Structure for describing YCbCr formats for consumption by applications.
  * This is used with HAL_PIXEL_FORMAT_YCbCr_*_888.
@@ -354,6 +380,7 @@ struct android_ycbcr {
     /** reserved for future use, set to 0 by gralloc's (*lock_ycbcr)() */
     uint32_t reserved[8];
 };
+#endif
 
 /**
  * Transformation definitions
@@ -374,9 +401,35 @@ enum {
     HAL_TRANSFORM_ROT_180   = 0x03,
     /* rotate source image 270 degrees clockwise */
     HAL_TRANSFORM_ROT_270   = 0x07,
+#ifndef STE_HARDWARE
     /* don't use. see system/window.h */
     HAL_TRANSFORM_RESERVED  = 0x08,
+#endif
 };
+
+#ifdef STE_HARDWARE
+enum {
+    HAL_PIXEL_FORMAT_RAW16 = 0x20,
+    HAL_PIXEL_FORMAT_RAW_SENSOR = 0x20,
+    HAL_PIXEL_FORMAT_RAW10 = 0x25,
+    HAL_PIXEL_FORMAT_RAW_OPAQUE = 0x24,
+    HAL_PIXEL_FORMAT_BLOB = 0x21,
+    HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED = 0x22,
+    HAL_PIXEL_FORMAT_YCbCr_420_888 = 0x23,
+};
+
+struct android_ycbcr {
+    void *y;
+    void *cb;
+    void *cr;
+    size_t ystride;
+    size_t cstride;
+    size_t chroma_step;
+
+    /** reserved for future use, set to 0 by gralloc's (*lock_ycbcr)() */
+    uint32_t reserved[8];
+ };
+#endif
 
 /**
  * Colorspace Definitions
