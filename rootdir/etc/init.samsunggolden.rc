@@ -55,6 +55,13 @@ on fs
     setprop ro.crypto.fuse_sdcard true
     start cspsa
 
+on charger
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+    write /sys/class/power_supply/battery/batt_lp_charging 1
+
+service healthd-charger /sbin/healthd -n
+    critical
+
 on post-fs
     chown radio radio /modemfs
     chmod 0771 /modemfs
@@ -435,6 +442,7 @@ on boot
 
     # Battery
     chown system system /sys/class/power_supply/battery/batt_vol_adc_cal
+    chown system system /sys/class/power_supply/battery/batt_lp_charging
     chown radio system /sys/class/power_supply/battery/fg_reset_soc
 
     # Modem

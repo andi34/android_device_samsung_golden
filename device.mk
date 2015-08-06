@@ -47,7 +47,6 @@ PRODUCT_PACKAGES += \
     fstab.samsunggolden \
     init.samsunggolden.rc \
     init.samsunggolden.usb.rc \
-    lpm.rc \
     ueventd.samsunggolden.rc
 
 PRODUCT_COPY_FILES += \
