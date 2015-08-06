@@ -85,7 +85,7 @@ char *locale;
 #define BACKLIGHT_PATH          "/sys/class/leds/lcd-backlight/brightness"
 #endif
 #ifndef CHARGING_ENABLED_PATH
-#define CHARGING_ENABLED_PATH   "/sys/class/power_supply/battery/charging_enabled"
+#define CHARGING_ENABLED_PATH   "/sys/class/power_supply/battery/batt_lp_charging"
 #endif
 
 #define LOGE(x...) do { KLOG_ERROR("charger", x); } while (0)
