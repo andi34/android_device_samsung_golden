@@ -134,8 +134,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 
 # Charging mode
-BOARD_LPM_BOOT_ARGUMENT_NAME := lpm_boot
-BOARD_LPM_BOOT_ARGUMENT_VALUE := 1
+BOARD_HEALTHD_CUSTOM_CHARGER := device/samsung/golden/healthd/healthd_mode_charger.cpp
 
 # SELinux
 HAVE_SELINUX := true
