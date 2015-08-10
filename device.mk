@@ -45,9 +45,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.d/66led_OFF:system/etc/init.d/66led_OFF
 
 # Graphics
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/lib/egl/egl.cfg:system/lib/egl/egl.cfg
-	
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.use_dithering=2 \
     persist.sys.strictmode.disable=1

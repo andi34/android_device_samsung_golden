@@ -71,7 +71,6 @@ TARGET_NOT_USE_GZIP_RECOVERY_RAMDISK := true
 
 # Graphics
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/samsung/golden/configs/lib/egl/egl.cfg
 COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH -DWORKAROUND_BUG_10194508
 BOARD_EGL_NEEDS_LEGACY_FB := true
 # reduce PB size from 2MB to 512KB
