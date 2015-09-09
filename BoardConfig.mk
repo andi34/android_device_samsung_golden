@@ -140,13 +140,23 @@ BOARD_LPM_BOOT_ARGUMENT_VALUE := 1
 HAVE_SELINUX := true
 BOARD_SEPOLICY_DIRS += device/samsung/golden/sepolicy
 BOARD_SEPOLICY_UNION += \
-    file_contexts \
+    admsrv.te \
+    atd.te \
+    copsd.te \
     device.te \
+    drmserver.te \
+    execmem.te \
     file.te \
+    file_contexts \
     geomagneticd.te \
+    healthd.te \
     init.te \
+    keystore.te \
     mediaserver.te \
     orientationd.te \
+    rild.te \
+    surfaceflinger.te \
+    sysinit.te \
     system.te \
     vold.te \
     wpa_supplicant.te \

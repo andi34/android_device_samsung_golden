@@ -73,6 +73,8 @@ on post-fs
     chown radio radio /modemfs/PERM/PROT/PPVALUES.DAT
     chmod 0644 /modemfs/PERM/PROT/PPVALUES.DAT
 
+    restorecon_recursive /modemfs
+
     chown radio system /efs
     chmod 0775 /efs
     chown radio system /efs/FactoryApp

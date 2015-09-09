@@ -1,0 +1,1 @@
+allow drmserver cpuctl_device:dir { search };

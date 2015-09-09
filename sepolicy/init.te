@@ -1,1 +1,10 @@
+# init
+allow init self:capability sys_module;
+
+# never allowed
+# allow init system_file:dir { create };
+
+allow init shell_data_file:file { relabelfrom };
+allow init shell_data_file:sock_file { getattr relabelfrom };
+allow init wifi_data_file:dir { search };
 allow init wpa_socket:unix_dgram_socket { bind create };

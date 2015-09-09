@@ -1,2 +1,30 @@
-#system
-/dev/block/mmcblk0p19                            u:object_r:block_device:s0
+# device
+/dev/block/mmcblk0p19               u:object_r:block_device:s0
+/dev/ape_opp                        u:object_r:pwr_device:s0
+/dev/b2r2_blt                       u:object_r:gpu_device:s0
+/dev/cm_.*                          u:object_r:audio_device:s0
+/dev/comp0                          u:object_r:gpu_device:s0
+/dev/cpu_dma_latency                u:object_r:device_latency:s0
+/dev/db8500-modem-trace             u:object_r:radio_device:s0
+/dev/dbx500_mloader_fw              u:object_r:radio_device:s0
+/dev/ddr_opp                        u:object_r:pwr_device:s0
+/dev/hwmem                          u:object_r:gpu_device:s0
+/dev/mali                           u:object_r:gpu_device:s0
+/dev/mmio_camera                    u:object_r:camera_device:s0
+/dev/rpc                            u:object_r:radio_device:s0
+/dev/sec                            u:object_r:radio_device:s0
+/dev/shm                            u:object_r:audio_device:s0
+/dev/socket/cops\.socket            u:object_r:cops_socket:s0
+
+# system
+/system/bin/admsrv                  u:object_r:admsrv_exec:s0
+/system/bin/at_core                 u:object_r:atd_exec:s0
+/system/bin/copsdaemon              u:object_r:copsd_exec:s0
+
+# Data labeling
+/data/cops.log                      u:object_r:radio_data_file:s0
+/data/local/tmp/adm-socket          u:object_r:adm_socket:s0
+/data/local/tmp/rme_act.*           u:object_r:audio_data_file:s0
+
+# Modemfs
+/modemfs(/.*)?                      u:object_r:modem_file:s0

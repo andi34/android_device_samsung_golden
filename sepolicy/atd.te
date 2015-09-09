@@ -1,0 +1,13 @@
+# AT daemon
+type atd, domain;
+type atd_exec, exec_type, file_type;
+
+init_daemon_domain(atd)
+
+allow atd self:capability { dac_override dac_read_search };
+allow atd self:netlink_socket { create };
+
+# never allow
+# allow atd device:chr_file { open read write };
+
+allow atd console_device:chr_file { open read write };

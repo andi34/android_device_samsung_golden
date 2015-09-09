@@ -1,0 +1,16 @@
+# admsrv
+type admsrv, domain;
+type admsrv_exec, exec_type, file_type;
+
+init_daemon_domain(admsrv)
+
+allow admsrv self:netlink_socket create_socket_perms;
+allow admsrv self:capability { chown fowner sys_nice };
+allow admsrv shell_data_file:dir { add_name remove_name write };
+allow admsrv shell_data_file:file { setattr unlink create read setattr lock };
+allow admsrv shell_data_file:sock_file { create setattr };
+allow admsrv radio_device:chr_file { open read write };
+allow admsrv sysfs_wake_lock:file { open read write };
+allow admsrv audio_device:chr_file { write };
+allow admsrv system_data_file:dir { setattr };
+allow admsrv system_data_file:file { setattr };

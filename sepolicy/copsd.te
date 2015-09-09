@@ -1,0 +1,12 @@
+# Modem Security daemon
+type copsd, domain;
+type copsd_exec, exec_type, file_type;
+
+init_daemon_domain(copsd)
+
+allow copsd self:capability { dac_override };
+allow copsd init:unix_stream_socket { connectto };
+allow copsd radio_data_file:file create_file_perms;
+allow copsd socket_device:sock_file create_file_perms;
+allow copsd socket_device:dir { write add_name };
+allow copsd sysfs_wake_lock:file w_file_perms;

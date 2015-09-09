@@ -1,1 +1,9 @@
+# Modemfs
+type modem_file, fs_type;
+
 type sysfs_device_writable, fs_type, sysfs_type;
+
+allow modem_file rootfs:filesystem { associate };
+
+type adm_socket, file_type;
+type cops_socket, file_type;

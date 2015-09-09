@@ -1,1 +1,5 @@
+# mediaserver
+allow mediaserver admsrv:unix_stream_socket { connectto };
 allow mediaserver mfc_device:chr_file rw_file_perms;
+allow mediaserver cpuctl_device:dir { search };
+allow mediaserver shell_data_file:dir { create };
