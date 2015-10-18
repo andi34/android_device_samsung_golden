@@ -43,6 +43,10 @@
 #define PIXEL_FORMAT GGL_PIXEL_FORMAT_BGRA_8888
 #define PIXEL_SIZE 4
 #endif
+#ifdef RECOVERY_RGBA
+#define PIXEL_FORMAT GGL_PIXEL_FORMAT_RGBA_8888
+#define PIXEL_SIZE 4
+#endif
 #ifdef RECOVERY_RGBX
 #define PIXEL_FORMAT GGL_PIXEL_FORMAT_RGBX_8888
 #define PIXEL_SIZE 4
@@ -167,7 +171,8 @@ static int get_framebuffer(GGLSurface *fb)
     void *bits;
 
     fd = open("/dev/graphics/fb0", O_RDWR);
-    while (fd < 0 && index < 10) {
+
+    while (fd < 0 && index < 30) {
         usleep(1000);
         fd = open("/dev/graphics/fb0", O_RDWR);
         index++;
@@ -196,6 +201,17 @@ static int get_framebuffer(GGLSurface *fb)
         vi.blue.offset    = 24;
         vi.blue.length    = 8;
         vi.transp.offset  = 0;
+        vi.transp.length  = 8;
+    } else if (PIXEL_FORMAT == GGL_PIXEL_FORMAT_RGBA_8888) {
+        fprintf(stderr, "Pixel format: RGBA_8888\n");
+        if (PIXEL_SIZE != 4)    fprintf(stderr, "E: Pixel Size mismatch!\n");
+        vi.red.offset     = 0;
+        vi.red.length     = 8;
+        vi.green.offset   = 8;
+        vi.green.length   = 8;
+        vi.blue.offset    = 16;
+        vi.blue.length    = 8;
+        vi.transp.offset  = 24;
         vi.transp.length  = 8;
     } else if (PIXEL_FORMAT == GGL_PIXEL_FORMAT_RGBX_8888) {
         fprintf(stderr, "Pixel format: RGBX_8888\n");
@@ -294,8 +310,12 @@ static int get_framebuffer(GGLSurface *fb)
 
     fb++;
 
+#ifndef TW_DISABLE_DOUBLE_BUFFERING
     /* check if we can use double buffering */
     if (vi.yres * fi.line_length * 2 > fi.smem_len)
+#else
+    printf("TW_DISABLE_DOUBLE_BUFFERING := true\n");
+#endif
         return fd;
 
     double_buffering = 1;
@@ -952,4 +972,3 @@ void gr_write_frame_to_file(int fd)
 {
     write(fd, gr_mem_surface.data, vi.xres * vi.yres * vi.bits_per_pixel / 8);
 }
-
