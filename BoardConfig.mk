@@ -66,7 +66,6 @@ TARGET_KERNEL_SOURCE := kernel/samsung/golden
 endif
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/golden/shbootimg.mk
 BOARD_KERNEL_CMDLINE := "androidboot.selinux=permissive"
-TARGET_USE_ST_ERICSSON_KERNEL := true
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
