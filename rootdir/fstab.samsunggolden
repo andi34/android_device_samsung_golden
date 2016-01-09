@@ -16,7 +16,7 @@
 /devices/sdi0/mmc_host/mmc1/mmc1	auto  vfat  defaults  voldmanaged=sdcard1:auto
 
 # zRAM
-/dev/block/zram0        none                swap      defaults                                                  zramsize=268435456,zramstreams=2
+/dev/block/zram0        none                swap      defaults                                                  zramsize=268435456
 
 
 # Recovery
