@@ -13,4 +13,4 @@ allow admsrv radio_device:chr_file { open read write };
 allow admsrv sysfs_wake_lock:file { open read write };
 allow admsrv audio_device:chr_file { write };
 allow admsrv system_data_file:dir { setattr };
-allow admsrv system_data_file:file { setattr };
+#allow admsrv system_data_file:file { setattr };
