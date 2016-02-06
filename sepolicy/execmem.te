@@ -4,7 +4,6 @@ atd
 bootanim
 copsd
 init
-init_shell
 rild
 surfaceflinger
 } self:process execmem;
