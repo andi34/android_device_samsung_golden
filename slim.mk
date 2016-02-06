@@ -16,8 +16,6 @@
 # limitations under the License.
 #
 
-TARGET_USE_PREBUILT_KERNEL := true
-
 # Inherit GSM telephony parts
 $(call inherit-product, vendor/slim/config/gsm.mk)
 

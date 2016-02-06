@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-TARGET_USE_PREBUILT_KERNEL := true
-
 # Inherit common Omni configurations
 $(call inherit-product, vendor/omni/config/common.mk)
 

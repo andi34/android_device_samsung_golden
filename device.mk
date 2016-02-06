@@ -16,29 +16,6 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_USE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := device/samsung/golden/prebuilt/zImage
-
-PRODUCT_COPY_FILES := \
-	$(TARGET_PREBUILT_KERNEL):kernel
-
-ifndef BOARD_CUSTOM_BOOTIMG_MK
-PRODUCT_PACKAGES += \
-    bthid.ko \
-    dhd.ko \
-    exfat_core.ko \
-    exfat_fs.ko \
-    hwreg.ko \
-    j4fs.ko \
-    joydev.ko \
-    param.ko \
-    rng-core.ko \
-    scsi_wait_scan.ko \
-    vpnclient.ko \
-    xpad.ko
-endif
-endif
-
 # Define kind of DPI
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
