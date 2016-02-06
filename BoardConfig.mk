@@ -69,28 +69,6 @@ BOARD_LPM_BOOT_ARGUMENT_VALUE := 1
 # SELinux
 HAVE_SELINUX := true
 BOARD_SEPOLICY_DIRS += device/samsung/golden/sepolicy
-BOARD_SEPOLICY_UNION += \
-    admsrv.te \
-    atd.te \
-    copsd.te \
-    device.te \
-    drmserver.te \
-    execmem.te \
-    file.te \
-    file_contexts \
-    geomagneticd.te \
-    healthd.te \
-    init.te \
-    keystore.te \
-    mediaserver.te \
-    orientationd.te \
-    rild.te \
-    surfaceflinger.te \
-    sysinit.te \
-    system.te \
-    vold.te \
-    wpa_supplicant.te \
-    zygote.te
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/golden/rootdir/etc/fstab.samsunggolden
