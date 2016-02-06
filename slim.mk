@@ -16,8 +16,7 @@
 # limitations under the License.
 #
 
-# SlimRoms specific overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay/slim
+TARGET_USE_PREBUILT_KERNEL := true
 
 # Inherit GSM telephony parts
 $(call inherit-product, vendor/slim/config/gsm.mk)

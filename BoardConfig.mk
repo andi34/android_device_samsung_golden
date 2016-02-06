@@ -16,8 +16,6 @@
 # limitations under the License.
 #
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/golden/include
-PRODUCT_VENDOR_KERNEL_HEADERS := device/samsung/golden/kernel-headers
 TARGET_OTA_ASSERT_DEVICE := golden,i8190,GT-I8190,goldenxx
 
 # Board
@@ -28,11 +26,6 @@ TARGET_NO_RADIOIMAGE := true
 # Platform 
 TARGET_BOARD_PLATFORM := montblanc
 TARGET_SOC := u8500
-BOARD_USES_STE_HARDWARE := true
-BOARD_USES_STE_SAMSUNG_HARDWARE := true
-TARGET_NEEDS_NON_PIE_SUPPORT := true
-COMMON_GLOBAL_CFLAGS += -DSTE_HARDWARE -DSTE_SAMSUNG_HARDWARE
-COMMON_GLOBAL_CPPFLAGS += -DSTE_HARDWARE -DSTE_SAMSUNG_HARDWARE
 
 # Architecture
 TARGET_ARCH := arm
@@ -52,12 +45,7 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
-
-# F2FS filesystem
 TARGET_USERIMAGES_USE_F2FS := true
-
-# Ramdisk
-TARGET_PROVIDES_ENVIRON_RC := true
 
 # Kernel
 ifneq ($(TARGET_USE_PREBUILT_KERNEL),true)
@@ -70,62 +58,6 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 TARGET_NOT_USE_GZIP_RECOVERY_RAMDISK := true
-
-# Graphics
-USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/samsung/golden/configs/lib/egl/egl.cfg
-COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH -DWORKAROUND_BUG_10194508
-BOARD_EGL_NEEDS_LEGACY_FB := true
-# reduce PB size from 2MB to 512KB
-BOARD_EGL_SYSTEMUI_PBSIZE_HACK :=true
-
-# Screen
-TARGET_SCREEN_HEIGHT := 800
-TARGET_SCREEN_WIDTH := 480
-
-# Camera
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
-
-# Generic BLN
-BOARD_HAVE_GENERIC_BLN := true
-
-# Wifi
-BOARD_WLAN_DEVICE := bcmdhd
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/dhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcmdhd_sta.bin"
-WIFI_DRIVER_FW_PATH_AP := "/system/etc/wifi/bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/system/etc/wifi/bcmdhd_p2p.bin"
-WIFI_DRIVER_MODULE_NAME := "dhd"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/bcmdhd_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
-WIFI_DRIVER_MODULE_AP_ARG := "firmware_path=/system/etc/wifi/bcmdhd_apsta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
-BOARD_NO_APSME_ATTR := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/golden/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/golden/bluetooth/btvendor_golden.txt
-
-# RIL
-BOARD_RIL_CLASS := ../../../device/samsung/golden/ril/
-BOARD_NEEDS_SEC_RIL_WORKAROUND := true
-
-# Browser
-ENABLE_WEBGL := true
-
-# Audio
-BOARD_USES_ALSA_AUDIO := true
-BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
-BOARD_HAVE_PRE_KITKAT_AUDIO_POLICY_BLOB := true
-COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB -DMR1_AUDIO_BLOB -DBOARD_CANT_REALLOCATE_OMX_BUFFERS
-USE_LEGACY_AUDIO_POLICY := 1
-BOARD_USES_LEGACY_MMAP := true
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 25
