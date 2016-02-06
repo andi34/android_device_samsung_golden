@@ -16,25 +16,6 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_USE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := device/samsung/golden/prebuilt/kernAl
-
-PRODUCT_COPY_FILES := \
-	$(TARGET_PREBUILT_KERNEL):kernel
-
-ifndef BOARD_CUSTOM_BOOTIMG_MK
-PRODUCT_PACKAGES += \
-    bthid.ko \
-    dhd.ko \
-    hwreg.ko \
-    j4fs.ko \
-    param.ko \
-    rng-core.ko \
-    scsi_wait_scan.ko \
-    vpnclient.ko
-endif
-endif
-
 # AOSP specific overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay/aosp
 

@@ -60,10 +60,8 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_PROVIDES_ENVIRON_RC := true
 
 # Kernel
-ifneq ($(TARGET_USE_PREBUILT_KERNEL),true)
 TARGET_KERNEL_CONFIG := slim_golden_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/golden
-endif
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/golden/shbootimg.mk
 BOARD_KERNEL_CMDLINE := "androidboot.selinux=permissive"
 BOARD_KERNEL_BASE := 0x00000000

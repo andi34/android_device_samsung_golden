@@ -2,11 +2,6 @@ LOCAL_PATH := $(call my-dir)
 LZMA_BIN := $(shell which lzma)
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES)
-ifeq ($(TARGET_USE_PREBUILT_KERNEL),true)
-	mkdir -p $(TARGET_OUT)/lib/modules
-	cp -f device/samsung/golden/prebuilt/system/lib/modules/* $(TARGET_OUT)/lib/modules
-	@echo -e ${CL_CYN}"----- prebuilt kernel modules ------"${CL_RST}$@
-endif
 	$(call pretty,"Target boot image: $@")
 	$(hide) $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $@
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
