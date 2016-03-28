@@ -31,9 +31,6 @@ PRODUCT_PACKAGES += \
     lpm.rc \
     ueventd.samsunggolden.rc
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.environ.rc:root/init.environ.rc
-
 # Recovery ramdisk
 PRODUCT_PACKAGES += \
     init.recovery.samsunggolden.rc \
