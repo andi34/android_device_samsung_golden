@@ -1,7 +1,7 @@
 # Mount point	fs	device                                   flags
 /system		ext4	/dev/block/mmcblk0p22
 /cache		ext4	/dev/block/mmcblk0p23
-/data		ext4	/dev/block/mmcblk0p25
+/data		ext4	/dev/block/mmcblk0p25   length=-16384
 /modemfs	ext4	/dev/block/mmcblk0p12   flags=display="Modem";backup=1
 /efs		ext4    /dev/block/mmcblk0p11   flags=display="EFS";backup=1
 /preload	ext4	/dev/block/mmcblk0p24   flags=display="Preload"
