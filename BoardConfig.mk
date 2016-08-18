@@ -58,7 +58,7 @@ TARGET_EXTERNAL_APPS = sdcard1
 TARGET_PROVIDES_ENVIRON_RC := true
 
 # Kernel
-TARGET_KERNEL_CONFIG := slim_golden_defconfig
+TARGET_KERNEL_CONFIG := golden_kitkat_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/golden
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/golden/shbootimg.mk
 BOARD_KERNEL_CMDLINE := "androidboot.selinux=permissive"
