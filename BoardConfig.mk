@@ -61,8 +61,8 @@ TARGET_PROVIDES_ENVIRON_RC := true
 TARGET_KERNEL_CONFIG := golden_kitkat_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/golden
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/golden/shbootimg.mk
-BOARD_KERNEL_CMDLINE := "androidboot.hardware=samsunggolden androidboot.selinux=permissive zcache=lz4"
 TARGET_USE_ST_ERICSSON_KERNEL := true
+# BOARD_KERNEL_CMDLINE := "androidboot.hardware=samsunggolden androidboot.selinux=permissive zcache=lz4"
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
