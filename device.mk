@@ -122,6 +122,10 @@ PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
+# Camera
+PRODUCT_PACKAGES += \
+    libjhead
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
