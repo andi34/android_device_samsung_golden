@@ -48,7 +48,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Kernel
-TARGET_KERNEL_CONFIG := slim_golden_defconfig
+TARGET_KERNEL_CONFIG := recovery_golden_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/golden
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/golden/shbootimg.mk
 BOARD_KERNEL_CMDLINE := "androidboot.selinux=permissive"
